@@ -1,0 +1,44 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <h5>Edit User</h5>
+            <a href="/admin/user" class="btn btn-primary btn-sm">Back</a>
+        </div>
+        <div class="card-body">
+            <form action="/admin/user/update/{{user._id}}" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{user.name}}">
+                </div>
+                 <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+                </div>
+                 <div class="mb-3">
+                    <label for="contact" class="form-label">Contact number</label>
+                    <input type="text" class="form-control" id="contact" name="contact" value="{{user.contact}}">
+                </div>
+                 <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+
+                    {{#if user.image}}
+                        <img src="{{user.image}}" alt="">
+                    {{/if}}
+                </div>
+               
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="" hidden>Select Status</option>
+                        <option value="1" {{filterStatusTrue user.status}}>Active</option>
+                        <option value="0" {{filterStatusFalse user.status}}>Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{>footer}}

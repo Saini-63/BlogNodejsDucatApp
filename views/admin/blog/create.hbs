@@ -1,0 +1,35 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <h5>Add Blog</h5>
+            <a href="/admin/blog" class="btn btn-primary btn-sm">Back</a>
+        </div>
+        <div class="card-body">
+            <form action="/admin/blog/store" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                 <div class="mb-3">
+                    <label for="image" class="form-label">image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="" hidden>Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{>footer}}

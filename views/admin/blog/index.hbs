@@ -1,0 +1,46 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <h5>Blog</h5>
+            <a href="/admin/blog/create" class="btn btn-primary btn-sm">Add Blog</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each blogs}}
+                        <tr>
+                            <td>{{this._id}}</td>
+                            <td>
+                                <img src="{{this.image}}" height="50">
+                            </td>
+                            <td>
+                                {{this.title}}
+                            </td>
+                            <td>
+                                {{this.description}}
+                            </td>
+                            <td>
+                                <a href="/admin/blog/edit/{{this._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                <button class="btn btn-danger btn-sm" onclick="document.getElementById('blog-{{this._id}}').submit()">Delete</button>
+
+                                <form action="/admin/blog/destroy/{{this._id}}" method="POST" id="blog-{{this._id}}"></form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>footer}}

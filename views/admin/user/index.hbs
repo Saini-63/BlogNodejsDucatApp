@@ -1,0 +1,49 @@
+{{>header}}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <h5>User</h5>
+            <a href="/admin/user/create" class="btn btn-primary btn-sm">Add User</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{this._id}}</td>
+                            <td>
+                                <img src="{{this.image}}" height="50">
+                            </td>
+                            <td>
+                                {{this.name}}
+                            </td>
+                            <td>
+                                {{this.email}}
+                            </td>
+                            <td>
+                                {{this.contact}}
+                            </td>
+                            <td>
+                                <a href="/admin/user/edit/{{this._id}}" class="btn btn-warning btn-sm me-2">Edit</a>
+                                <button class="btn btn-danger btn-sm" onclick="document.getElementById('user-{{this._id}}').submit()">Delete</button>
+
+                                <form action="/admin/user/destroy/{{this._id}}" method="POST" id="user-{{this._id}}"></form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>footer}}
